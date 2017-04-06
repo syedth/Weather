@@ -38,7 +38,7 @@ public class WeatherActivity extends AppCompatActivity {
     private TextView location;
     private TextView description;
     private TextView temp;
-    private ImageView fewclouds;
+    private ImageView climate;
     private ImageView tempmax;
     private ImageView tempmin;
     private RecyclerView recyclerView;
@@ -65,7 +65,7 @@ public class WeatherActivity extends AppCompatActivity {
         location = (TextView) findViewById(R.id.location);
         description = (TextView) findViewById(R.id.text_description);
         temp = (TextView) findViewById(R.id.text_temp);
-        fewclouds = (ImageView) findViewById(R.id.img_one);
+        climate = (ImageView) findViewById(R.id.climate_condition);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
@@ -162,28 +162,19 @@ public class WeatherActivity extends AppCompatActivity {
                         location.setText(jsonCity.getString("name"));
                         JSONArray jsonmain = result.getJSONArray("list");
                         JSONObject mainObject = jsonmain.getJSONObject(0);
-                        temp.setText( mainObject.getJSONObject("main").getString("temp"));
-                        text_temp_min.setText(mainObject.getJSONObject("main").getString("temp_min"));
-                        text_temp_max.setText(mainObject.getJSONObject("main").getString("temp_max"));
 
-//                    location.setText(result.getString("name"));
-//                    JSONArray jsonArray = result.getJSONArray("weather");
-//                    JSONObject weatherObject = jsonArray.getJSONObject(0);
-//                    description.setText(weatherObject.getString("description"));
-//                    JSONObject mainObject = result.getJSONObject("main");
-//                    mainObject.getString("temp");
-//                    mainObject.getString("temp_max");
-//                    mainObject.getString("temp_min");
-//                    temp.setText(mainObject.getString("temp")+ (char) 0x00B0 );
-//                    text_temp_max.setText(mainObject.getString("temp_max")+ (char) 0x00B0 );
-//                    text_temp_min.setText(mainObject.getString("temp_min")+ (char) 0x00B0 );
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                        temp.setText( mainObject.getJSONObject("main").getString("temp")+(char) 0x00B0);
+                        text_temp_min.setText(mainObject.getJSONObject("main").getString("temp_min")+(char) 0x00B0);
+                        text_temp_max.setText(mainObject.getJSONObject("main").getString("temp_max")+(char) 0x00B0);
+                        String descriptionAsString = result.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("description");
+                        description.setText(descriptionAsString);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        Log.d("", "");
+                    }
                 }
-
-            } else {
-                Log.d("", "");
             }
         }
-    }
-}
