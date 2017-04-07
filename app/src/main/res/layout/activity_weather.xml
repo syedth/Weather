@@ -46,7 +46,6 @@
                 android:id="@+id/climate_condition"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/clear_sky"
                 android:layout_marginTop="15dp" />
 
 
@@ -56,8 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="sans-serif-condensed"
-                android:layout_toRightOf="@id/climate_condition" />
+                android:layout_toRightOf="@id/climate_condition"
+                android:fontFamily="sans-serif-condensed" />
         </RelativeLayout>
 
         <LinearLayout
@@ -80,14 +79,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="18dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <ImageView
                 android:id="@+id/temp_min"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/rain" />
 
             <TextView
@@ -96,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="18dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
         </LinearLayout>
 
         <TextView
@@ -112,15 +111,15 @@
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:background="#4D080301"
-        android:clipToPadding="true"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:background="#4D080301"
         app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
+
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>
